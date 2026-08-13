@@ -1,4 +1,5 @@
 import { Pool, type PoolClient, type QueryResultRow } from "pg";
+import "dotenv/config";
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
