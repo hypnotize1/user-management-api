@@ -7,6 +7,10 @@ export const pool = new Pool({
   idleTimeoutMillis: Number(process.env.DB_POOL_IDLE_TIMEOUT ?? 30_000),
 });
 
+pool.on("error", (err) => {
+  console.error("Unexpected error on idle client", err);
+});
+
 export async function query<T extends QueryResultRow>(
   sql: string,
   params: readonly unknown[] = [],
